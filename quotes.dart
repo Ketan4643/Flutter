@@ -22,7 +22,14 @@ class _QuotesPageState extends State<QuotesPage> {
     "orange",
     "red"
   ];
-
+  getTextWidgets(){
+    var textWidgets = <Widget>[];
+    quotes.forEach((element) {
+      textWidgets.add(Text(element));
+      textWidgets.add(Divider());
+    });
+    return textWidgets;
+  }
   var idx = 0;
 
   @override
@@ -34,10 +41,12 @@ class _QuotesPageState extends State<QuotesPage> {
          children:[
           InkWell(
             child:
-              Text(quotes[idx]),
+
+          Text(getTextWidgets()),
+
             onTap: (){
             setState( () {
-              for(idx=0;idx<quotes.length-1;idx++){
+
               if(idx == quotes.length-1){
                 idx = 0;
               }else if(quotes[idx]=="black"){
@@ -50,7 +59,7 @@ class _QuotesPageState extends State<QuotesPage> {
                 ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.orange);
               }
     }
-              }
+
 
                 );
     },
